@@ -9,4 +9,9 @@ public class ViewController {
     public String test(){
         return "test";//  "/templates/"+test+".html"
     }
+
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
 }
