@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewController {
     @RequestMapping("/test")//路径：localhost:8081/test
     public String test(){
-        return "test";
+        return "test";//  "/templates/"+test+".html"
     }
 }
