@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <!--    导入vue-->
+    <script src="/res/js/vue.js" type="text/javascript"></script>
+<!--    导入element-ui组件-->
+    <script src="/res/js/index.js" type="text/javascript"></script>
+    <link href="/res/css/index.css" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        background-color: #3a8ee6;
+        background-image: url("/res/images/9.jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    .el-card{
+        width: 400px;
+        margin: 0 auto;
+        margin-top: 30px;
+        background-color: rgba(255,255,255,0.5);
+    }
+    .code_input{
+        width: 67%;
+    }
+    .box-card{
+        border-radius: 15px;
+        border: 0px;
+    }
+    .code_p{
+        text-align: center;
+    }
+    .submit{
+        /*margin-left: 38%;*/
+        justify-content: center;
+    }
+
+</style>
+<body>
+<div id="register">
+    <el-card class="box-card">
+        <div slot="header"  class="clearfix">
+            <div style="text-align: center;font-size: 30px">注册</div>
+        </div>
+        <el-form id="form">
+            <el-form-item prop="userName">
+                <el-input v-model="user.userName" type="text" placeholder="请输入账号"></el-input>
+            </el-form-item>
+
+            <el-form-item prop="userEmail">
+                <el-input v-model="user.userEmail" type="text" placeholder="请输入邮箱"></el-input>
+            </el-form-item>
+
+            <el-form-item prop="userBirth">
+                请选择出生日期
+                <el-input v-model="user.userBirth" type="date"></el-input>
+            </el-form-item>
+
+            <el-form-item prop="userPassword">
+                <el-input v-model="user.userPassword" type="password" placeholder="请输入密码" show-password></el-input>
+            </el-form-item>
+
+            <el-form-item  prop="rePassword">
+                <el-input v-model="user.rePassword" type="password" placeholder="请再次输入密码" show-password></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary">发送验证码</el-button>
+                <el-input v-model="user.checkCode" type="text" placeholder="请输入验证码" class="code_input"></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <p class="code_p">
+                    <el-button type="primary" round class="submit">注册</el-button>
+                </p>
+
+            </el-form-item>
+
+        </el-form>
+    </el-card>
+</div>
+
+<script>
+    new Vue({
+        el:"#register",
+        data(){
+            return{
+                user:{
+                    userName:"",
+                    userPassword:"",
+                    userBirth:"",
+                    //验证码
+                    checkCode:"",
+                    //再次输入密码
+                    rePassword:""
+                }
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>
