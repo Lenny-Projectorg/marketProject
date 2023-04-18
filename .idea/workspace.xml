@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e7e6497d-1630-4ff3-8280-5a3a2c7c04fa" name="变更" comment="SDOJOH">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/market.iml" beforeDir="false" afterPath="$PROJECT_DIR$/market/market.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/market/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/market/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/org/example/market/controller/DataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/org/example/market/controller/DataController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/org/example/market/controller/ViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/org/example/market/controller/ViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/org/example/market/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/org/example/market/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/org/example/market/utils/Result$CodeEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/org/example/market/utils/Result$CodeEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/org/example/market/utils/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/org/example/market/utils/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/target/classes/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/market/target/classes/templates/test.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Z_1GB" />
+      </list>
+    </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2OYgYW0tll41buLqt1JVyrWR3vY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\zc\marketProject\market\src\main\java\org\example\market\utils" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SpringApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="market" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.market.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.market.SpringApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="e7e6497d-1630-4ff3-8280-5a3a2c7c04fa" name="变更" comment="" />
+      <created>1681742978321</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681742978321</updated>
+      <workItem from="1681742980613" duration="2459000" />
+      <workItem from="1681777802422" duration="5259000" />
+    </task>
+    <task id="LOCAL-00001" summary="SDOJOH">
+      <created>1681743327548</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681743327548</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SDOJOH" />
+    <option name="LAST_COMMIT_MESSAGE" value="SDOJOH" />
+  </component>
+</project>
