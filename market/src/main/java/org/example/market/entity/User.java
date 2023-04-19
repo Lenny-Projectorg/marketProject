@@ -1,6 +1,7 @@
 package org.example.market.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,8 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//处理前端接收的
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")//处理后端接收的
     private Date createTime;
+
+    @TableField(exist = false)//表示数据库表中没有该字段
+    private String checkCode;
 
 }
