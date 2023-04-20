@@ -12,7 +12,6 @@ public class DataController {
     @GetMapping("/testData")
     public Result test(){
         try {
-            System.out.println(1/0);
             return Result.ok(200,"测试成功", LocalDateTime.now());
         }catch (Exception e){
             return Result.error(500,"发生了异常",e.getMessage());

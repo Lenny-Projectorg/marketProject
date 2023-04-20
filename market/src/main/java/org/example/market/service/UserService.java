@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -65,8 +66,28 @@ public class UserService {
         }
 
         //2、验证码正确   进行注册
+        user.setCreateTime(new Date());//添加注册时间
         int i = dao.insert(user);
         return Result.ok("注册成功!");
+    }
+
+    //登录
+    public Result login(User user){
+        //判断邮箱是否已经注册
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_email",user.getUserEmail());//(数据库字段,实体类字段)
+        User u = dao.selectOne(wrapper);
+        if(ObjectUtils.isNull(u)){
+            return Result.error("该邮箱未注册!");
+        }
+
+        //执行登录
+        wrapper.eq("user_password",user.getUserPassword());
+        u = dao.selectOne(wrapper);
+        if(ObjectUtils.isNull(u)){
+            return Result.error("密码输入错误!");
+        }
+        return Result.ok("登录成功!");
     }
 
 }

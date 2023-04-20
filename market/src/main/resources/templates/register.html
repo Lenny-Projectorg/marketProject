@@ -43,6 +43,10 @@
         /*margin-left: 38%;*/
         justify-content: center;
     }
+    .a_div{
+        float: right;
+        margin-top: -50px;
+    }
 
 </style>
 <body>
@@ -53,11 +57,11 @@
         </div>
         <el-form id="form" :rules="formRules" ref="user" :model="user"><!--        :rules表示绑定规则-->
             <el-form-item prop="userName">
-                <el-input v-model="user.userName" type="text" placeholder="请输入账号"></el-input>
+                <el-input  prefix-icon="el-icon-s-custom" v-model="user.userName" type="text" placeholder="请输入用户名"></el-input>
             </el-form-item>
 
             <el-form-item prop="userEmail">
-                <el-input v-model="user.userEmail" type="text" placeholder="请输入邮箱"></el-input>
+                <el-input prefix-icon="el-icon-lock" v-model="user.userEmail" type="text" placeholder="请输入邮箱"></el-input>
             </el-form-item>
 
             <el-form-item prop="userBirth">
@@ -66,25 +70,23 @@
             </el-form-item>
 
             <el-form-item prop="userPassword">
-                <el-input v-model="user.userPassword" type="password" placeholder="请输入密码" show-password></el-input>
+                <el-input prefix-icon="el-icon-lock" v-model="user.userPassword" type="password" placeholder="请输入密码" show-password></el-input>
             </el-form-item>
 
             <el-form-item  prop="rePassword">
-                <el-input v-model="user.rePassword" type="password" placeholder="请再次输入密码" show-password></el-input>
+                <el-input prefix-icon="el-icon-lock" v-model="user.rePassword" type="password" placeholder="请再次输入密码" show-password></el-input>
             </el-form-item>
 
             <el-form-item>
-                <el-input v-model="user.checkCode" type="text" placeholder="请输入验证码" class="code_input"></el-input>
-                <el-button @click="sendCode" type="primary" :disabled="buttonStatus" class="sendButton">{{buttonName}}</el-button>
-
+                <el-input prefix-icon="el-icon-lock" v-model="user.checkCode" type="text" placeholder="请输入验证码" class="code_input"></el-input>
+                <el-button :loading="loginStatus" @click="sendCode" type="primary" :disabled="buttonStatus" class="sendButton">{{buttonName}}</el-button>
             </el-form-item>
 
             <el-form-item>
                 <p class="code_p">
                     <el-button @click="register" type="primary" class="submit">注册</el-button>
-                    <button @click="test">测试</button>
+                <div class="a_div">已有账号?去<a href="/">登录</a></div>
                 </p>
-
             </el-form-item>
 
         </el-form>
@@ -107,6 +109,7 @@
             }
             return{
                 buttonStatus:false,//按钮状态
+                loginStatus:false,//加载状态
                 buttonName:"发送验证码",//按钮名称
                 user:{
                     userName:"",
@@ -117,7 +120,6 @@
                     checkCode:"",
                     //再次输入密码
                     rePassword:"",
-                    createTime:this.dateFormat(new Date()),
                 },
 
                 //申明表单验证规则
@@ -159,22 +161,22 @@
                 var _this = this;
                 // alert(new Date())
                 //提交前判断表单验证
-                var boo = this.register_check()
+                var boo = _this.register_check()
                 // alert(boo)
                 if(boo){
                     $.ajax({
                         url:"/user/register",
-                        type:"get",
+                        type:"post",
+                        contentType:"application/json",//表示发送的是json格式数据
                         dataType:"json",//表示接受后端传来的json数据
-                        data:{
-                            "user": _this.user,
-                        },
+                        data:JSON.stringify(_this.user),//将user转换成JSON格式字符串
                         success:function (res) {
                             //弹框提示
                             _this.$message({
                                 type:res.code===200?"success":"error",
                                 message:res.msg,
                             })
+                            // console.log(res)
                         }
                     })
                 }else{
@@ -183,7 +185,7 @@
             },
             sendCode(){
                 var _this=this;
-
+                _this.loginStatus=true;
                 var type = _this.register_check();
                 if(!type){
                     return
@@ -208,10 +210,9 @@
                             _this.buttonStatus=true;
                             _this.times();
                         }
-
-                    }
+                        _this.loginStatus=false
+                    },
                 })
-
             },
             // 计时
             times(){
@@ -227,27 +228,6 @@
                         _this.buttonStatus=false;
                     }
                 },1000)//每隔一秒执行一次代码
-            },
-            test(){
-                var _this=this;
-                var nowTime = _this.dateFormat(new Date())
-                // _this.user.createTime = nowTime
-                alert("nowDate:"+_this.user.createTime)
-            },
-            //时间格式化函数，此处仅针对yyyy-MM-dd hh:mm:ss 的格式进行格式化
-            dateFormat:function(time) {
-                var date=new Date(time);
-                var year=date.getFullYear();
-                /* 在日期格式中，月份是从0开始的，因此要加0
-                 * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
-                 * */
-                var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
-                var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
-                var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
-                var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
-                var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
-                // 拼接
-                return year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
             },
 
         }

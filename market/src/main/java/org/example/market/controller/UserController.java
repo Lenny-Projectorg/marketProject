@@ -4,10 +4,9 @@ import org.example.market.entity.User;
 import org.example.market.service.UserService;
 import org.example.market.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @RequestMapping("/user")//父路径
@@ -15,7 +14,7 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @GetMapping("list")//localhost:端口号/user/list
+    @GetMapping("/list")//localhost:端口号/user/list
     public Result list(){
         try {
             return service.list();
@@ -37,11 +36,32 @@ public class UserController {
 
 
     //注册
-    @GetMapping("/register")
+
+    /**
+     *
+     * 请求方式：Post
+     * 请求路径：/user/register
+     * 所需参数：User实体类 Json格式
+     */
+    @PostMapping("/register")
     public Result register(@RequestBody User user){
         try {
-            System.out.println(user.getUserName());
             return service.register(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.error(500,"发生了异常!",e.getMessage());
+        }
+    }
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    @PostMapping("/login")
+    public Result login(@RequestBody User user){
+        try {
+            return service.login(user);
         }catch (Exception e){
             e.printStackTrace();
             return Result.error(500,"发生了异常!",e.getMessage());
