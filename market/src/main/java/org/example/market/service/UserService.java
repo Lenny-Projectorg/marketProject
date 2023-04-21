@@ -50,7 +50,7 @@ public class UserService {
         //发送验证码
         boolean result = email.sendEmail(userEmail, "验证码", "你的验证码是:" + code);
 
-        //将验证码
+        //将验证码放入redis中存储30秒
         redisTemplate.opsForValue().set("code",code,30, TimeUnit.SECONDS);
         return result?Result.ok("发送成功!"):Result.error("发送失败!");
 

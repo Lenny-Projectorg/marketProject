@@ -27,4 +27,10 @@ public class ViewController {
     public String index(){
         return "shop";
     }
+
+    //详情界面
+    @RequestMapping("/detail")
+    public String detail(){
+        return "detail";
+    }
 }
