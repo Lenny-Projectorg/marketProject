@@ -1,5 +1,6 @@
 package org.example.market.controller;
 
+import org.example.market.jwt.JwtToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +19,7 @@ public class ViewController {
 
     //登录界面
     @RequestMapping("/")
+    @JwtToken(type = false)
     public String login(){
         return "login";
     }
@@ -32,5 +34,17 @@ public class ViewController {
     @RequestMapping("/detail")
     public String detail(){
         return "detail";
+    }
+
+    //支付界面
+    @RequestMapping("/pay")
+    public String pay(){
+        return "payTest";
+    }
+
+    //购物车界面
+    @RequestMapping("/cart")
+    public String cart(){
+        return "cart";
     }
 }

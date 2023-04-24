@@ -176,7 +176,9 @@
                                 type:res.code===200?"success":"error",
                                 message:res.msg,
                             })
-                            // console.log(res)
+                            if(res.code===200){
+                                setTimeout("location.href='/'",2000)
+                            }
                         }
                     })
                 }else{

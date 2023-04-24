@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import org.example.market.dao.UserDao;
 import org.example.market.entity.User;
+import org.example.market.jwt.JwtUtil;
 import org.example.market.utils.Email;
 import org.example.market.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +88,9 @@ public class UserService {
         if(ObjectUtils.isNull(u)){
             return Result.error("密码输入错误!");
         }
-        return Result.ok("登录成功!");
+        //生成token
+        String token = JwtUtil.createUserToken(u.getId() + "", u.getUserEmail());
+        return Result.ok(200,"登录成功!",token);
     }
 
 }
