@@ -9,12 +9,11 @@ import org.example.market.utils.Email;
 import org.example.market.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static net.sf.jsqlparser.util.validation.metadata.NamedObject.user;
@@ -27,6 +26,10 @@ public class UserService {
     Email email;
     @Autowired
     RedisTemplate redisTemplate;
+
+    //加密算法
+    @Autowired
+    PasswordEncoder encoder;
 
     public Result list(){
         List<User> users = dao.selectList(null);
@@ -68,6 +71,11 @@ public class UserService {
 
         //2、验证码正确   进行注册
         user.setCreateTime(new Date());//添加注册时间
+        //密码加密
+        String encode = encoder.encode(user.getUserPassword());
+//        System.out.println(encode);
+        user.setUserPassword(encode);
+
         int i = dao.insert(user);
         return Result.ok("注册成功!");
     }
@@ -88,8 +96,10 @@ public class UserService {
         if(ObjectUtils.isNull(u)){
             return Result.error("密码输入错误!");
         }
+
         //生成token
         String token = JwtUtil.createUserToken(u.getId() + "", u.getUserEmail());
+
         return Result.ok(200,"登录成功!",token);
     }
 

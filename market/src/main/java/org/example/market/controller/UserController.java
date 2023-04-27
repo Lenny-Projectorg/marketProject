@@ -1,9 +1,13 @@
 package org.example.market.controller;
 
 import org.example.market.entity.User;
+import org.example.market.security.service.LoginService;
 import org.example.market.service.UserService;
 import org.example.market.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -13,6 +17,13 @@ import java.util.Date;
 public class UserController {
     @Autowired
     UserService service;
+
+    @Autowired
+    LoginService loginService;
+
+    @Autowired
+    RedisTemplate redisTemplate;
+
 
     @GetMapping("/list")//localhost:端口号/user/list
     public Result list(){
@@ -61,11 +72,20 @@ public class UserController {
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         try {
-            return service.login(user);
+            return loginService.login(user);
         }catch (Exception e){
             e.printStackTrace();
             return Result.error(500,"发生了异常!",e.getMessage());
         }
+    }
+
+    @GetMapping("/logout")
+    public Result logout(){
+        //登出===>清除redis中的用户信息
+        UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User u = (User) auth.getPrincipal();
+        redisTemplate.delete(u.getId()+"");
+        return Result.ok("退出成功!");
     }
 
 }

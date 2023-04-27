@@ -6,6 +6,7 @@ import org.example.market.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,10 @@ import java.util.List;
 public class MybatisTest {
     @Autowired//往测试类中 注入UserDao
     private UserDao dao;
+
+    //加密算法
+    @Autowired
+    PasswordEncoder encoder;
 
     //测试向数据库表中添加数据
     @Test
@@ -57,5 +62,11 @@ public class MybatisTest {
         for (User user : users) {
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void Test(){
+        String encode = encoder.encode("123456");
+        System.out.println(encode);
     }
 }
